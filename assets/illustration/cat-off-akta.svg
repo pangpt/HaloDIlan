@@ -1,15 +1,22 @@
 <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_8_126" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="46" height="46">
+<mask id="mask0_0_58" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="46" height="46">
 <circle cx="23" cy="23" r="23" fill="#0BCAD4"/>
 </mask>
-<g mask="url(#mask0_8_126)">
+<g mask="url(#mask0_0_58)">
 <circle cx="23" cy="23" r="23" fill="#0BCAD4"/>
-<ellipse cx="22.5" cy="34" rx="10.5" ry="3" fill="#0AA8B0"/>
-<path d="M18.3391 12.8169V16.583L15 20.9472V34.226H22.5L23.5684 12.8169H18.3391Z" fill="#EAF1FF"/>
-<path d="M26.6609 16.583V12.8169H22.5V34.226H30V20.9472L26.6609 16.583Z" fill="#D5E7FF"/>
-<path d="M15.0001 20.9472H22.9835V29.7445H15.0001V20.9472Z" fill="#F5D844"/>
-<path d="M22.5 20.9472H30V29.7445H22.5V20.9472Z" fill="#ECBD2C"/>
-<path d="M16.6894 9H22.9835V13.715H16.6894V9Z" fill="#6B66D0"/>
-<path d="M22.5 9H28.3105V13.715H22.5V9Z" fill="#524798"/>
+<ellipse cx="23.5" cy="36.5" rx="12.5" ry="3.5" fill="#0AA8B0"/>
+<rect x="13" y="8" width="21" height="28" rx="1" fill="#D5E7FF"/>
+<rect x="13" y="8" width="11" height="28" rx="1" fill="#EAF1FF"/>
+<rect x="17" y="17" width="13" height="1" fill="#ECBD2C"/>
+<rect x="17" y="17" width="7" height="1" fill="#F5D844"/>
+<rect x="17" y="20" width="13" height="1" fill="#ECBD2C"/>
+<rect x="17" y="20" width="7" height="1" fill="#F5D844"/>
+<rect x="17" y="23" width="13" height="1" fill="#ECBD2C"/>
+<rect x="17" y="23" width="7" height="1" fill="#F5D844"/>
+<rect x="17" y="26" width="13" height="1" fill="#ECBD2C"/>
+<rect x="17" y="26" width="7" height="1" fill="#F5D844"/>
+<circle cx="32" cy="33" r="4" fill="#E06379"/>
+<path d="M32 37C33.0609 37 34.0783 36.5786 34.8284 35.8284C35.5786 35.0783 36 34.0609 36 33C36 31.9391 35.5786 30.9217 34.8284 30.1716C34.0783 29.4214 33.0609 29 32 29L32 33L32 37Z" fill="#C63C50"/>
+<path d="M31.2593 35L30 33.5345L31.2593 34.1379L34 30L31.2593 35Z" stroke="#C6DCFF"/>
 </g>
 </svg>

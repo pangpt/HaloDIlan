@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.border,
   },
   picture: {
-    width: 80,
-    height: 60,
+    width: 65,
+    height: 75,
     borderRadius: 11,
     marginRight: 16,
   },

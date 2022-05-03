@@ -1,17 +1,41 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { colors } from '../../../utils';
-import { IconNext } from '../../../assets';
+import {
+  IconEditProfile,
+  IconHelp,
+  IconLanguage,
+  IconNext,
+  IconRate,
+  ILNullPhoto,
+} from '../../../assets';
 
-export default function ListOfficer({ profile, name, desc, type, onPress }) {
+export default function List({ name, desc, type, onPress, icon }) {
+  const Icon = () => {
+    if (icon === 'edit-profile') {
+      return <IconEditProfile />;
+    }
+    if (icon === 'language') {
+      return <IconLanguage />;
+    }
+    if (icon === 'rate') {
+      return <IconRate />;
+    }
+    if (icon === 'help') {
+      return <IconHelp />;
+    }
+    return <IconEditProfile />;
+  };
+
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Image source={profile} style={styles.avatar} />
+      {icon ? <Icon /> : <Image source={ILNullPhoto} style={styles.avatar} />}
       <View style={styles.content}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.desc}>{desc}</Text>
       </View>
-      {type === 'next' && <IconNext />}
+      {/* {type === 'next' && <IconNext />} */}
+      <IconNext />
     </TouchableOpacity>
   );
 }
@@ -27,12 +51,12 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    marginLeft: 16,
   },
   avatar: {
     width: 46,
     height: 46,
     borderRadius: 46 / 2,
-    marginRight: 12,
   },
   name: {
     fontSize: 16,
@@ -41,5 +65,6 @@ const styles = StyleSheet.create({
   desc: {
     fontSize: 12,
     color: colors.text.secondary,
+    textTransform: 'capitalize',
   },
 });

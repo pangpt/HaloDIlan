@@ -3,17 +3,27 @@ import React, { useEffect } from 'react';
 import { ILLogo } from '../../assets';
 import { StatusBar } from 'expo-status-bar';
 import { colors } from '../../utils';
+import { Fire } from '../../config';
 
 export default function Splash({ navigation }) {
   useEffect(() => {
-    setTimeout(() => {
-      navigation.replace('GetStarted');
-    }, 3000);
+    const unsubscribe = Fire.auth().onAuthStateChanged((user) => {
+      setTimeout(() => {
+        if (user) {
+          //user lagi login
+          navigation.replace('MainApp');
+        } else {
+          navigation.replace('GetStarted');
+        }
+      }, 3000);
+    });
+
+    return () => unsubscribe();
   }, [navigation]);
   return (
     <View style={styles.container}>
       <ILLogo />
-      <Text style={styles.title}>Halo-Dilan</Text>
+      {/* <Text style={styles.title}>Halo-Dilan</Text> */}
       <StatusBar style="auto" />
     </View>
   );

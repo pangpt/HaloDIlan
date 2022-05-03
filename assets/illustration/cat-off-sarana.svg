@@ -1,8 +1,13 @@
-<svg width="2" height="46" viewBox="0 0 2 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_8_198" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="46" height="46">
+<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_0_76" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="46" height="46">
 <circle cx="23" cy="23" r="23" fill="#0BCAD4"/>
 </mask>
-<g mask="url(#mask0_8_198)">
+<g mask="url(#mask0_0_76)">
 <circle cx="23" cy="23" r="23" fill="#0BCAD4"/>
+<ellipse cx="22.5" cy="34" rx="10.5" ry="3" fill="#0AA8B0"/>
+<path d="M20.9485 13V16.6942L19 20.9749V34H23.3765L24 13H20.9485Z" fill="#EAF1FF"/>
+<path d="M24.2192 16.6942V13H22V34H26V20.9749L24.2192 16.6942Z" fill="#D5E7FF"/>
+<path d="M16 26H23.9834V34.7973H16V26Z" fill="#F5D844"/>
+<path d="M23 18H30.5V26.7973H23V18Z" fill="#ECBD2C"/>
 </g>
 </svg>

@@ -8,6 +8,10 @@ import Courts from './Courts';
 import Messages from './Messages';
 import ChooseOfficer from './ChooseOfficer';
 import Chatting from './Chatting';
+import OfficerProfile from './OfficerProfile';
+import UserProfile from './UserProfile';
+import UpdateProfile from './UpdateProfile';
+import News from './News';
 
 export {
   Splash,
@@ -20,4 +24,8 @@ export {
   Messages,
   ChooseOfficer,
   Chatting,
+  OfficerProfile,
+  UserProfile,
+  UpdateProfile,
+  News,
 };

@@ -7,19 +7,24 @@ import {
   IconOfficerActive,
   IconMessagesActive,
   IconCourtsActive,
+  IconHome,
+  IconHomeActive,
 } from '../../../assets';
 import { colors } from '../../../utils';
 
 export default function TabItem({ title, active, onPress, onLongPress }) {
   const Icon = () => {
-    if (title === 'Petugas') {
-      return active ? <IconOfficerActive /> : <IconOfficer />;
+    if (title === 'Beranda') {
+      return active ? <IconHomeActive /> : <IconHome />;
     }
     if (title === 'Pesan') {
       return active ? <IconMessagesActive /> : <IconMessages />;
     }
     if (title === 'Pengadilan') {
       return active ? <IconCourtsActive /> : <IconCourts />;
+    }
+    if (title === 'Profil') {
+      return active ? <IconOfficerActive /> : <IconOfficer />;
     }
     return <IconOfficer />;
   };

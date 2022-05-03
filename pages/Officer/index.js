@@ -1,37 +1,119 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   HomeProfile,
   NewsItem,
   RatedInformation,
 } from '../../components/molecules';
 import OfficerCategory from '../../components/molecules/OfficerCategory';
-import { colors } from '../../utils';
+import { colors, getData, showError } from '../../utils';
 import { Gap } from '../../components/atoms';
-import { JSONCategoryOfficer } from '../../assets';
+import { ILNullPhoto } from '../../assets';
+import { Fire } from '../../config';
 
 export default function Officer({ navigation }) {
+  const [categoryInfo, setCategoryInfo] = useState([]);
+  const [officers, setOfficers] = useState([]);
+  const [news, setNews] = useState([]);
+  const [profile, setProfile] = useState({
+    photo: ILNullPhoto,
+    fullName: '',
+    category: '',
+  });
+  useEffect(() => {
+    getCategoryInfo();
+    getTopRatedOfficer();
+    getNews();
+    navigation.addListener('focus', () => {
+      getUserData();
+    });
+  }, [navigation]);
+
+  const getTopRatedOfficer = () => {
+    Fire.database()
+      .ref('officers/')
+      .orderByChild('rate')
+      .limitToLast(3)
+      .once('value')
+      .then((res) => {
+        if (res.val()) {
+          const oldData = res.val();
+          const data = [];
+          Object.keys(oldData).map((key) => {
+            data.push({
+              id: key,
+              data: oldData[key],
+            });
+          });
+          setOfficers(data);
+        }
+      })
+      .catch((err) => {
+        showError(err.message);
+      });
+  };
+
+  const getCategoryInfo = () => {
+    Fire.database()
+      .ref('category-info/')
+      .once('value')
+      .then((res) => {
+        if (res.val()) {
+          const data = res.val();
+          const filterData = data.filter((el) => el !== null);
+
+          setCategoryInfo(filterData);
+        }
+      })
+      .catch((err) => {
+        showError(err.message);
+      });
+  };
+
+  const getNews = () => {
+    Fire.database()
+      .ref('news/')
+      .once('value')
+      .then((res) => {
+        if (res.val()) {
+          setNews(res.val());
+        }
+      })
+      .catch((err) => {
+        showError(err.message);
+      });
+  };
+
+  const getUserData = () => {
+    getData('user').then((res) => {
+      const data = res;
+      data.photo = ILNullPhoto;
+      setProfile(res);
+    });
+  };
+
   return (
     <View style={styles.page}>
       <View style={styles.content}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.wrapperSection}>
             <Gap height={30} />
-            <HomeProfile />
-            <Text style={styles.welcome}>
-              Cari informasi tentang pengadilan di sini
-            </Text>
+            <HomeProfile
+              profile={profile}
+              onPress={() => navigation.navigate('UserProfile', profile)}
+            />
+            <Text style={styles.welcome}>informasi apa yang Anda cari?</Text>
           </View>
           <View style={styles.wrapperScroll}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <View style={styles.category}>
                 <Gap width={32} />
-                {JSONCategoryOfficer.data.map((item) => {
+                {categoryInfo.map((item) => {
                   return (
                     <OfficerCategory
-                      key={item.id}
+                      key={`category-${item.id}`}
                       category={item.category}
-                      onPress={() => navigation.navigate('ChooseOfficer')}
+                      onPress={() => navigation.navigate('ChooseOfficer', item)}
                     />
                   );
                 })}
@@ -40,15 +122,33 @@ export default function Officer({ navigation }) {
             </ScrollView>
           </View>
           <View style={styles.wrapperSection}>
-            <Text style={styles.sectionLabel}>Informasi Paling Dicari</Text>
-            <RatedInformation />
-            <RatedInformation />
-            <RatedInformation />
-            <Text style={styles.sectionLabel}>Berita</Text>
+            <Text style={styles.sectionLabel}>
+              Petugas Informasi Paling Dicari
+            </Text>
+            {officers.map((officer) => {
+              return (
+                <RatedInformation
+                  key={officer.id}
+                  name={officer.data.fullName}
+                  desc={officer.data.category}
+                  avatar={ILNullPhoto}
+                  onPress={() => navigation.navigate('OfficerProfile', officer)}
+                />
+              );
+            })}
+            <Text style={styles.sectionLabel}>Video Terbaru</Text>
           </View>
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
+          {news.map((item) => {
+            return (
+              <NewsItem
+                key={item.id}
+                title={item.title}
+                date={item.date}
+                image={item.image}
+                // onPress={() => navigation.navigate('News', item)}
+              />
+            );
+          })}
           <Gap height={30} />
         </ScrollView>
       </View>
@@ -74,6 +174,7 @@ const styles = StyleSheet.create({
   },
   welcome: {
     fontSize: 20,
+    fontWeight: '800',
     color: colors.text.primary,
     marginTop: 30,
     marginBottom: 16,
@@ -86,6 +187,7 @@ const styles = StyleSheet.create({
   },
   sectionLabel: {
     fontSize: 16,
+    fontWeight: '800',
     color: colors.text.primary,
     marginTop: 30,
     marginBottom: 16,

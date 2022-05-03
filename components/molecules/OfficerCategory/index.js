@@ -14,12 +14,12 @@ export default function OfficerCategory({ category, onPress }) {
     if (category === 'informasi sarana') {
       return <ILCatSarana style={styles.illustration} />;
     }
-    return <ILCatPerkara style={styles.illustration} />;
+    return <ILCatSarana style={styles.illustration} />;
   };
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Icon />
-      <Text style={styles.label}>Saya butuh</Text>
+      {/* <Text style={styles.label}>Saya butuh</Text> */}
       <Text style={styles.category}>{category}</Text>
     </TouchableOpacity>
   );
@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
   },
   category: {
-    fontSize: 12,
+    fontSize: 14,
+    fontWeight: '600',
     color: colors.text.primary,
   },
 });

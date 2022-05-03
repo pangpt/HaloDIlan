@@ -1,15 +1,15 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { DummyOfficer1, IconStar } from '../../../assets';
+import { IconStar } from '../../../assets';
 import { colors } from '../../../utils';
 
-export default function RatedInformation() {
+export default function RatedInformation({ onPress, name, desc, avatar }) {
   return (
-    <View style={styles.container}>
-      <Image source={DummyOfficer1} style={styles.avatar} />
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <Image source={avatar} style={styles.avatar} />
       <View style={styles.profile}>
-        <Text style={styles.name}>Pak Dilan</Text>
-        <Text style={styles.category}>Informasi Akta Cerai</Text>
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.category}>{desc}</Text>
       </View>
       <View style={styles.rate}>
         <IconStar />
@@ -18,7 +18,7 @@ export default function RatedInformation() {
         <IconStar />
         <IconStar />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingBottom: 16,
+    alignItems: 'center',
   },
   avatar: {
     width: 50,

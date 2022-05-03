@@ -3,14 +3,16 @@ import React from 'react';
 import { ILGetStarted, ILLogo } from '../../assets';
 import { Button } from '../../components';
 import { colors } from '../../utils';
+import { useSelector } from 'react-redux';
 
 export default function GetStarted({ navigation }) {
+  const stateGlobal = useSelector((state) => state);
   return (
     <ImageBackground source={ILGetStarted} style={styles.page}>
       <View>
         <ILLogo />
         <Text style={styles.title}>
-          Akses informasi di Pengadilan jadi lebih mudah & cepat
+          Akses informasi di {stateGlobal.court} jadi lebih mudah & cepat
         </Text>
       </View>
       <View>

@@ -7,7 +7,7 @@ import DummyNews2 from './news2.png';
 import DummyNews3 from './news3.png';
 import DummyCourt1 from './court1.png';
 import DummyCourt2 from './court2.png';
-import DummyCourt3 from './court1.png';
+import DummyCourt3 from './court3.png';
 
 export {
   DummyUser,

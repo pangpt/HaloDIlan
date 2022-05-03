@@ -9,26 +9,28 @@ export default function Courts() {
   return (
     <View style={styles.page}>
       <ImageBackground source={ILCourtBG} style={styles.background}>
-        <Text style={styles.title}>Pengadilan Agama Wilayah PTA Makassar</Text>
-        <Text style={styles.desc}>22 Pengadilan Agama</Text>
+        <Text style={styles.title}>Pengadilan Agama Watampone</Text>
+        <Text style={styles.desc}>
+          Jl. Lak Yos Sudarso No. 49A Watampone Sulawesi Selatan
+        </Text>
       </ImageBackground>
       <View style={styles.content}>
         <ListCourt
-          type="Pengadilan Pertama Kelas I A"
-          name="Pengadilan Agama Watampone"
-          address="Jln. Yos Sudarso"
+          // type="Pengadilan Pertama Kelas I A"
+          name="Dra. Nur Alam Syaf, S.H., M.H."
+          address="Ketua Pengadilan"
           pic={DummyCourt1}
         />
         <ListCourt
-          type="Pengadilan Tingkat Banding"
-          name="Pengadilan Tinggi Agama Makassar"
-          address="Jln. Makassar"
+          // type="Pengadilan Tingkat Banding"
+          name="Dra. Hj. Nurlinah K., S.H., M.H."
+          address="Wakil Ketua "
           pic={DummyCourt2}
         />
         <ListCourt
-          type="Pengadilan Tingkat Banding"
-          name="Pengadilan Tinggi Agama Makassar"
-          address="Jln. Makassar"
+          // type="Pengadilan Tingkat Banding"
+          name="Drs. H. Rahmading, M.H."
+          address="Panitera"
           pic={DummyCourt3}
         />
       </View>
@@ -61,6 +63,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     flex: 1,
     marginTop: -30,
-    paddingTop: 14,
+    paddingTop: 4,
   },
 });

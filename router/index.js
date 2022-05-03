@@ -11,6 +11,10 @@ import {
   Messages,
   ChooseOfficer,
   Chatting,
+  OfficerProfile,
+  UpdateProfile,
+  UserProfile,
+  News,
 } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../components';
@@ -21,16 +25,17 @@ const Tab = createBottomTabNavigator();
 const MainApp = () => {
   return (
     <Tab.Navigator tabBar={(props) => <BottomNavigator {...props} />}>
-      <Tab.Screen name="Petugas" component={Officer} />
+      <Tab.Screen name="Beranda" component={Officer} />
       <Tab.Screen name="Pesan" component={Messages} />
       <Tab.Screen name="Pengadilan" component={Courts} />
+      <Tab.Screen name="Profil" component={UserProfile} />
     </Tab.Navigator>
   );
 };
 
 export default function Router() {
   return (
-    <Stack.Navigator initialRouteName="MainApp">
+    <Stack.Navigator initialRouteName="Slash">
       <Stack.Screen
         name="Splash"
         component={Splash}
@@ -69,6 +74,26 @@ export default function Router() {
       <Stack.Screen
         name="Chatting"
         component={Chatting}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="OfficerProfile"
+        component={OfficerProfile}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="UserProfile"
+        component={UserProfile}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="UpdateProfile"
+        component={UpdateProfile}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="News"
+        component={News}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
